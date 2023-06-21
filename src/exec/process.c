@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:13:53 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/19 11:57:27 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/21 21:33:35 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static pid_t	*ft_process_loop(t_shell *shell, t_cmd *cmd, size_t *count,
 	if (cmd[*count].type != CMD_BUILT_IN
 		&& cmd[*count].type != CMD_NOT_BUILT_IN)
 		return (shell->pid);
-	if (*pos < (shell->cmd_count - 1))
+	if (*pos <= (shell->cmd_count - 1))
 	{
 		if (pipe(shell->new_fds) == -1)
 			return (ft_print_error(ERROR_PIPE));
