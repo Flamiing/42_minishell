@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 03:12:56 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/19 12:16:46 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/21 21:07:33 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	ft_pipe_check(t_shell *shell, t_token *token)
 {
+	if (token->type == TYPE_PIPE && !token->next)
+		return (ft_parser_error(shell, SYNTAX, TYPE_NEWLINE));
 	if (token->next && token->next->type == TYPE_PIPE
 		&& (token->type == TYPE_INPUT
 			|| token->type == TYPE_OUTPUT
