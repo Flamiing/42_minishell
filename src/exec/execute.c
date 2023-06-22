@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 18:48:52 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/21 15:26:08 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:36:00 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ static void	*ft_execute_cmds(t_shell *shell, t_cmd *cmd)
 	shell->pid = (pid_t *)ft_calloc(size + 1, sizeof(pid_t));
 	if (!shell->pid)
 		return (ft_print_error(ERROR_MALLOC));
+	g_status.cmd_execution = 1;
 	if (ft_process(shell, cmd, shell->pid) == NULL)
 		return (NULL);
 	ft_handle_waits(shell->pid, size);
+	g_status.cmd_execution = 0;
 	free(shell->pid);
 	return (NULL);
 }

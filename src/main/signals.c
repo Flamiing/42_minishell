@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:37:07 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/19 12:21:18 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:48:32 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ int	ft_ctrl_d_heredoc(void)
 	exit (EXIT_SUCCESS);
 }
 
-static void	ft_ctrl_c(int signal)
+static void	ft_ctrl_c_and_sigquit(int signal)
 {
-	(void)signal;
 	g_status.exit_status = 1;
 	if (signal == SIGINT && !g_status.in_heredoc)
 	{
@@ -48,6 +47,14 @@ static void	ft_ctrl_c(int signal)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
+	}
+	else if (signal == SIGQUIT && !g_status.in_heredoc)
+	{
+		if (g_status.cmd_execution == 1)
+		{
+			g_status.exit_status = 131;
+			printf("Quit: 3\n");
+		}
 	}
 }
 
@@ -69,6 +76,7 @@ void	ft_ctrl_c_heredoc(int signal)
 
 void	ft_handle_signals(void)
 {
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, ft_ctrl_c);
+	//signal(SIGQUIT, SIG_IGN);
+	signal(SIGQUIT, ft_ctrl_c_and_sigquit);
+	signal(SIGINT, ft_ctrl_c_and_sigquit);
 }

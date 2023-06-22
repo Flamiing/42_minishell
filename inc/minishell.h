@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:37:12 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/21 18:13:28 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:36:16 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@
 typedef struct s_status
 {
 	int	exit_status;
+	int	cmd_execution;
 	int	cd_status;
 	int	file_is_folder;
 	int	infile_problem;
