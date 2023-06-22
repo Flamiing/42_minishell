@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 12:02:52 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/19 12:08:31 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:06:26 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	ft_child_process(t_cmd *cmd, size_t count, char *first_quote,
 	size_t size)
 {
 	rl_catch_signals = 1;
+	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, ft_ctrl_c_heredoc);
 	close(g_status.heredoc_fd[0]);
 	ft_get_heredoc(cmd, count, first_quote);
