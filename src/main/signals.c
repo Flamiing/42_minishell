@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:37:07 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/22 10:48:32 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:58:07 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	ft_ctrl_c_heredoc(int signal)
 
 void	ft_handle_signals(void)
 {
-	//signal(SIGQUIT, SIG_IGN);
 	signal(SIGQUIT, ft_ctrl_c_and_sigquit);
 	signal(SIGINT, ft_ctrl_c_and_sigquit);
 }
