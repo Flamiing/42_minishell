@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:37:07 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/22 10:58:07 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:01:02 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static void	ft_ctrl_c_and_sigquit(int signal)
 		ft_putstr_fd("\n", STDOUT);
 		rl_on_new_line();
 		rl_replace_line("", 0);
-		rl_redisplay();
+		if (g_status.cmd_execution != 1)
+			rl_redisplay();
 	}
 	else if (signal == SIGQUIT && !g_status.in_heredoc)
 	{
