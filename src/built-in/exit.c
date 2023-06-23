@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 11:08:15 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/23 11:47:15 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:16:15 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_exit(t_shell *shell, t_cmd *cmd, char **args)
 
 	args_count = ft_arrlen(args);
 	cmd->can_remove_quotes = 1;
-	ft_putstr_fd("exit\n", 2);
+	//ft_putstr_fd("exit\n", 2);
 	if (args_count == 1)
 		ft_exit_and_free(g_status.exit_status, shell);
 	else if (args_count > 1)

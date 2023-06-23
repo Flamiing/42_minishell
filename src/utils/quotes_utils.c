@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 16:05:02 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/19 12:19:24 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:13:18 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,23 @@ size_t	ft_out_of_quotes(char *buffer, int type)
 	size_t	quote_counter;
 	size_t	pos;
 	size_t	count;
+	int		opposite;
 
 	quote_counter = ft_count_quotes(buffer, type);
 	pos = 0;
 	count = 0;
+	opposite = 0;
 	while (buffer[pos])
 	{
 		if (buffer[pos] == type)
 			count++;
-		if (count == quote_counter
-			&& (buffer[pos] == ' ' || (buffer[pos] > 8 && buffer[pos] <= 13)))
+		if (buffer[pos] == ft_get_opposite(type))
+			opposite++;
+		if (count == quote_counter && (opposite == 0
+			&& (buffer[pos] == ' ' || (buffer[pos] > 8 && buffer[pos] <= 13))))
 			return (pos);
+		if (opposite == 2)
+			opposite = 0;
 		pos++;
 	}
 	return (pos);

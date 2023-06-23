@@ -6,13 +6,13 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 10:49:09 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/05/20 13:05:14 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:57:26 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static int	ft_is_oposite(char c, int mode)
+static int	ft_is_opposite(char c, int mode)
 {
 	int	opposite;
 
@@ -52,7 +52,7 @@ static int	ft_has_to_copy(char *str, size_t limit, int mode)
 	inside_opposite = 0;
 	while (count != limit)
 	{
-		if (ft_is_oposite(str[count], mode) && inside == 0)
+		if (ft_is_opposite(str[count], mode) && inside == 0)
 			inside_opposite++;
 		if (str[count] == mode && inside_opposite == 0)
 			inside++;
@@ -80,7 +80,7 @@ size_t	ft_size_without_quotes(char *str, int mode)
 	inside_opposite = 0;
 	while (str[count])
 	{
-		if (ft_is_oposite(str[count], mode) && inside == 0)
+		if (ft_is_opposite(str[count], mode) && inside == 0)
 			inside_opposite++;
 		if (str[count] == mode && inside_opposite == 0)
 			inside++;

@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:37:12 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/22 10:36:16 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:13:03 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ int				ft_max_or_min_nbr(char *str);
 int				ft_is_not_arg(t_token *tokens);
 int				ft_begin_with_space(char *str);
 int				ft_not_inside_quotes(char *str);
+int				ft_get_opposite(int type);
 int				ft_is_empty_with_quotes(char *arg);
 int				ft_execute(t_shell *shell, t_cmd *cmd);
 int				ft_last_repeated(char **args, size_t id);
@@ -268,6 +269,7 @@ void			ft_exit(t_shell *shell, t_cmd *cmd, char **args);
 void			*ft_get_commands(t_shell *shell, t_token **tokens);
 void			ft_built_in_out(t_shell *shell, t_cmd *cmd, char **args);
 void			ft_handle_fds(t_shell *shell, t_cmd *cmd, size_t position);
+void			ft_reset_quote_counts(size_t *quote_count, int *opposite);
 void			*ft_get_heredoc(t_cmd *cmd, size_t count, char *first_quote);
 void			ft_echo(t_cmd *cmd, char *raw_cmd, char *cmd_path, char **arg);
 void			ft_exec_built_in(t_shell *shell, t_cmd *cmd, char **args,
