@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:47:12 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/21 21:22:07 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:45:19 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ pid_t	ft_process_cmd(t_shell *shell, t_cmd *cmd, size_t pos)
 	else if (pid == 0)
 	{
 		ft_handle_fds(shell, cmd, pos);
-		if (cmd->problem_with_file == 1)
+		if (cmd->problem_with_file == 1
+			|| (g_status.infile_problem == 1 && shell->pipe_count == 0))
 			exit(EXIT_FAILURE);
 		if (execve(cmd->cmd_path, cmd->args, shell->env) == -1)
 		{
@@ -57,7 +58,8 @@ void	ft_child_process(t_shell *shell, t_cmd *cmd, int *infofd, size_t pos)
 	close(infofd[1]);
 	read(infofd[0], &g_status.exit_status, sizeof(int));
 	close(infofd[0]);
-	if (cmd->problem_with_file == 1)
+	if (cmd->problem_with_file == 1
+		|| (g_status.infile_problem == 1 && shell->pipe_count == 0))
 		exit(EXIT_FAILURE);
 	ft_exec_built_in(shell, cmd, cmd->args, shell->env);
 	exit(g_status.exit_status);
