@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 02:57:08 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/21 21:34:50 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:49:39 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_handle_fds(t_shell *shell, t_cmd *cmd, size_t pos)
 	size_t	size;
 
 	size = shell->cmd_count;
-		ft_first_redirection(shell, cmd, pos);
+	ft_first_redirection(shell, cmd, pos);
 	if (pos <= size - 1)
 		ft_seccond_redirection(shell, cmd, size, pos);
 }
