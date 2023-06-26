@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 19:41:58 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/07 16:51:51 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:14:06 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,12 @@ void	*ft_free_everything(t_shell *shell)
 	if (shell->tokens)
 		ft_free_tokens(&shell->tokens);
 	if (shell->cmd && shell->parser_status == 0)
+	{
+		ft_close_files(shell->cmd, shell->cmd_count + shell->redir_count
+			+ shell->heredoc_count);
 		ft_free_cmds(shell->cmd, shell->cmd_count + shell->redir_count
 			+ shell->heredoc_count);
+	}
 	return (NULL);
 }
 

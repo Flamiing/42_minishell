@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:37:12 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/23 12:13:03 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:14:25 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,7 @@ void			ft_ctrl_d(t_shell *shell);
 void			ft_handle_signals(void);
 void			ft_free_array(char **arr);
 void			ft_export_error(char *arg);
+void			ft_close_files(t_cmd *cmd, size_t size);
 void			ft_ctrl_c_heredoc(int signal);
 void			ft_destroy_shell(t_shell *shell);
 void			ft_clean_heredoc(t_cmd *cmd);

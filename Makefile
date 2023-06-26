@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/27 19:25:47 by alaaouam          #+#    #+#              #
-#    Updated: 2023/06/23 12:21:11 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/06/26 12:11:13 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.c command_line.c signals.c lexer.c lexer_utils.c tokens.c free_utils.
 			get_value.c array_utils.c heredoc.c heredoc_utils.c quotes_utils.c quote_remove_utils.c heredoc_to_file.c cmd_expansion.c error_utils.c \
 			execute.c process.c process_utils.c redirections.c file_utils.c exec_built_in.c cd.c echo.c exit.c export.c pwd.c unset.c export_utils.c \
 			export_utils_2.c export_utils_3.c general_utils.c env_utils.c quotes.c cmd_expansion_utils.c exit_utils.c overflow_utils.c check_redir_error.c \
-			expand_cmd.c expand_arg.c add_args.c redir_expansion.c token_utils.c echo_utils.c quotes_utils2.c
+			expand_cmd.c expand_arg.c add_args.c redir_expansion.c token_utils.c echo_utils.c quotes_utils2.c file_utils2.c
 			
 
 SRC_PATH = src/*/
