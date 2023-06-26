@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:13:53 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/21 21:33:35 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:50:49 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,17 @@ static pid_t	*ft_process_loop(t_shell *shell, t_cmd *cmd, size_t *count,
 	return (shell->pid);
 }
 
+static void	ft_close_file_descriptors(t_shell *shell, size_t pos)
+{
+	if (pos > 1)
+	{
+		close(shell->old_fds[0]);
+		close(shell->old_fds[1]);
+	}
+	close(shell->new_fds[0]);
+	close(shell->new_fds[1]);
+}
+
 pid_t	*ft_process(t_shell *shell, t_cmd *cmd, pid_t *pid)
 {
 	size_t	count;
@@ -78,10 +89,6 @@ pid_t	*ft_process(t_shell *shell, t_cmd *cmd, pid_t *pid)
 		}
 		count++;
 	}
-	if (pos > 1)
-	{
-		close(shell->old_fds[0]);
-		close(shell->old_fds[1]);
-	}
+	ft_close_file_descriptors(shell, pos);
 	return (pid);
 }
