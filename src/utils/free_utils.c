@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 19:41:58 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/26 12:14:06 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/27 20:53:07 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	ft_free_cmds(t_cmd *cmd, size_t size)
 	size_t	count;
 
 	count = 0;
-	while (count < size)
+	while (count <= size)
 	{
 		if (cmd[count].cmd)
 			free(cmd[count].cmd);
