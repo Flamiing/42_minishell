@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 14:37:07 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/22 11:01:02 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:29:36 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_ctrl_d(t_shell *shell)
 	g_status.eof = 1;
 	if (isatty(STDIN_FILENO))
 		write(2, "exit\n", 6);
+	free(shell->minishell_env_dir);
+	free(shell->minishell_heredoc_dir);
 	if (shell->env)
 		ft_free_array(shell->env);
 	exit(g_status.exit_status);

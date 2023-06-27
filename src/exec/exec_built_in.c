@@ -6,13 +6,13 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 22:10:16 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/08 13:35:38 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:43:09 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void	ft_wrong_exit_cmd(char *raw_cmd)
+void	ft_wrong_exit_cmd(char *raw_cmd)
 {
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(raw_cmd, 2);
@@ -26,15 +26,7 @@ void	ft_built_in_out(t_shell *shell, t_cmd *cmd, char **args)
 	size_t	len;
 
 	len = ft_strlen(cmd->cmd);
-	if (ft_strncmp(cmd->cmd, "exit", len) == 0 && len == 4
-		&& shell->pipe_count == 0)
-	{
-		if (ft_is_lowercase(cmd->raw_cmd))
-			ft_exit(shell, cmd, args);
-		else
-			ft_wrong_exit_cmd(cmd->raw_cmd);
-	}
-	else if (ft_strncmp(cmd->cmd, "unset", len) == 0 && len == 5)
+	if (ft_strncmp(cmd->cmd, "unset", len) == 0 && len == 5)
 		ft_unset(shell, args);
 	else if (ft_strncmp(cmd->cmd, "cd", len) == 0 && len == 2
 		&& shell->pipe_count == 0)

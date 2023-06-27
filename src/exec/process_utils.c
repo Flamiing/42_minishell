@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:47:12 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/26 12:44:11 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:42:35 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,22 @@ void	ft_child_process(t_shell *shell, t_cmd *cmd, int *infofd, size_t pos)
 	exit(g_status.exit_status);
 }
 
+static int	ft_check_exit(t_shell *shell, t_cmd *cmd, char **args)
+{
+	size_t	len;
+
+	len = ft_strlen(cmd->cmd);
+	if (ft_strncmp(cmd->cmd, "exit", len) == 0 && len == 4
+		&& shell->pipe_count == 0)
+	{
+		if (ft_is_lowercase(cmd->raw_cmd))
+			ft_exit(shell, cmd, args);
+		else
+			ft_wrong_exit_cmd(cmd->raw_cmd);
+	}
+	return (0);
+}
+
 pid_t	ft_process_built_in(t_shell *shell, t_cmd *cmd, size_t pos)
 {
 	pid_t	pid;
@@ -72,6 +88,7 @@ pid_t	ft_process_built_in(t_shell *shell, t_cmd *cmd, size_t pos)
 	int		infofd[2];
 
 	size = shell->cmd_count;
+	ft_check_exit(shell, cmd, cmd->args);
 	if (pipe(infofd) == -1)
 	{
 		ft_print_error(ERROR_PIPE);

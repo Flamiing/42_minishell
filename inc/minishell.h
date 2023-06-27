@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:37:12 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/26 12:14:25 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:43:46 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ int				ft_is_empty(char *arg);
 int				ft_ctrl_d_heredoc(void);
 int				ft_not_closed(char *str);
 int				ft_has_quotes(char *str);
+int				ft_get_opposite(int type);
 int				ft_is_lowercase(char *str);
 int				ft_has_input(char *buffer);
 int				ft_has_variable(char *cmd);
@@ -184,7 +185,6 @@ int				ft_max_or_min_nbr(char *str);
 int				ft_is_not_arg(t_token *tokens);
 int				ft_begin_with_space(char *str);
 int				ft_not_inside_quotes(char *str);
-int				ft_get_opposite(int type);
 int				ft_is_empty_with_quotes(char *arg);
 int				ft_execute(t_shell *shell, t_cmd *cmd);
 int				ft_last_repeated(char **args, size_t id);
@@ -249,7 +249,6 @@ void			ft_ctrl_d(t_shell *shell);
 void			ft_handle_signals(void);
 void			ft_free_array(char **arr);
 void			ft_export_error(char *arg);
-void			ft_close_files(t_cmd *cmd, size_t size);
 void			ft_ctrl_c_heredoc(int signal);
 void			ft_destroy_shell(t_shell *shell);
 void			ft_clean_heredoc(t_cmd *cmd);
@@ -259,9 +258,11 @@ void			*ft_command_line(t_shell *shell);
 void			*ft_free_tokens(t_token **tokens);
 void			*ft_free_everything(t_shell *shell);
 void			ft_unset(t_shell *shell, char **args);
+void			ft_wrong_exit_cmd(char *raw_cmd);
 void			ft_export(t_shell *shell, char **args);
 void			*ft_append(char *heredoc, char *line);
 void			ft_command_not_found(t_cmd *cmd);
+void			ft_close_files(t_cmd *cmd, size_t size);
 void			ft_export_without_args(t_shell *shell);
 void			ft_wrong_exit_argument(t_cmd *cmd);
 void			*ft_heredoc(t_shell *shell, t_cmd *cmd);
