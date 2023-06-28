@@ -6,11 +6,22 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 19:11:39 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/21 17:23:25 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/28 18:10:32 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+static int	ft_not_echo(char *cmd)
+{
+	size_t	len;
+
+	len = ft_strlen(cmd);
+	if (ft_strncmp(cmd, "echo", len) == 0 && len == 4)
+		return (0);
+	else
+		return (1);
+}
 
 static t_cmd	*ft_heredoc_expansion(t_shell *shell, t_cmd *cmd)
 {
@@ -22,7 +33,7 @@ static t_cmd	*ft_heredoc_expansion(t_shell *shell, t_cmd *cmd)
 	while (count < shell->cmd_list_size)
 	{
 		pos = count + 1;
-		if (cmd[count].type != CMD_HEREDOC)
+		if (cmd[count].type != CMD_HEREDOC && ft_not_echo(cmd[count].cmd))
 		{
 			if (pos < shell->cmd_list_size && cmd[pos].type == CMD_HEREDOC)
 			{

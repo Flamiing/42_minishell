@@ -6,7 +6,7 @@
 /*   By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:37:12 by alaaouam          #+#    #+#             */
-/*   Updated: 2023/06/27 19:43:46 by alaaouam         ###   ########.fr       */
+/*   Updated: 2023/06/28 18:03:30 by alaaouam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@
 # define OUTPUT_NEAR "minishell: syntax error near unexpected token `>'"
 
 /* |~~~ PROMPT ~~~| */
-# define PROMPT "\001\e[38;5;118m\002MI\001\e[38;5;154m\002NI\001\e[38;5;148m\
-\002SHE\001\e[38;5;184m\002LL$\001\e[38;5;231m\002\033[0m\001 "
+# define PROMPT "minishell$ "
 # define HEREDOC_PROMPT "\e[38;5;118m>\e[38;5;231m\033[0m "
 
 /* |~~~ LEXER TYPES ~~~| */

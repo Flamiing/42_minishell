@@ -6,7 +6,7 @@
 #    By: alaaouam <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/27 19:25:47 by alaaouam          #+#    #+#              #
-#    Updated: 2023/06/27 19:51:34 by alaaouam         ###   ########.fr        #
+#    Updated: 2023/06/28 18:17:39 by alaaouam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,12 +40,10 @@ LIBFT = $(LIBFT_PATH)libft.a
 INC = inc/
 LIBFT_INC = libft/include
 READLINE_INC = /opt/homebrew/opt/readline/include
-#READLINE_INC = /usr/lib/x86_64-linux-gnu/
 
 CC = gcc
-CFLAGS =  -Wall -Wextra -Werror  -I $(INC) -I $(LIBFT_INC) -I $(READLINE_INC) #-fsanitize=address
+CFLAGS =  -Wall -Wextra -Werror  -I $(INC) -I $(LIBFT_INC) -I $(READLINE_INC)
 LFLAGS = -lreadline -L /opt/homebrew/opt/readline/lib
-#LFLAGS = -lreadline #-L /usr/lib/x86_64-linux-gnu/
 RM = rm -rf
 
 #	RULES	#
